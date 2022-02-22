@@ -3,14 +3,15 @@ import pandas as pd
 from crypto import Crypto
 import sys
 import os
-from timeframes import Timeframes
+from enums.timeframes import Timeframes
 import logging
 
 
 DATA_LOC = "data/"
 
+
 class Exchange:
-    def __init__(self, name, cryptos:list =None):
+    def __init__(self, name, cryptos: list = None):
         self.name = name.lower()
         self.currencies = {}
         self.data_path = f"{DATA_LOC}{self.name}/"
@@ -25,5 +26,5 @@ class Exchange:
         if currency.data[time] == []:
             logging.warning(f"No data for {symbol}{fiat}")
             currency.get_data(time, self.data_path)
-            logging.info("Data loaded")	
+            logging.info("Data loaded")
         return currency.data[time]

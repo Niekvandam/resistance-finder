@@ -1,8 +1,10 @@
 import candlestick
 import pandas as pd
-from timeframes import Timeframes
+from enums.timeframes import Timeframes
 import logging
 import os
+
+
 class Crypto:
     def __init__(self, symbol: str) -> None:
         self.symbol = symbol.upper()
@@ -20,7 +22,7 @@ class Crypto:
             self.data[time] = df
             df.iloc[::-1]
             return df
-            
+
         else:
             logging.warning("No data for {}".format(self.symbol))
             logging.info("Returning empty dataframe")
